@@ -16,9 +16,14 @@ ITEMS = [
 ]
 
 def home(request):
-    text = """<h1>"Изучаем django"</h1>
-        <strong>Автор</strong>: <i>Кожанов А.Н.</i>"""
-    return HttpResponse(text)
+    # text = """<h1>"Изучаем django"</h1>
+    #     <strong>Автор</strong>: <i>Кожанов А.Н.</i>"""
+    # return HttpResponse(text)
+    context = {
+        'name': "Mia",
+        'email': "mia@ya.ru"
+    }
+    return render(request, "index.html", context)
 
 def about(request):
     text = f'<p>Имя: <b>{AUTOR["Имя"]}</b><br>\
@@ -29,12 +34,15 @@ def about(request):
     return HttpResponse(text)
 
 def get_items(request):
-    data = []
-    for item in ITEMS:
-        data.append(f'''<li><a href="/item/{item['id']}">{item['name']}</li><br>''')
-    result = f'<h1>список товаров</h1><ol><br>{"".join(data)}</ol>'
-    return HttpResponse(result)
-
+    # data = []
+    # for item in ITEMS:
+    #     data.append(f'''<li><a href="/item/{item['id']}">{item['name']}</li><br>''')
+    # result = f'<h1>список товаров</h1><ol><br>{"".join(data)}</ol>'
+    # return HttpResponse(result)
+    context = {
+        'items': ITEMS
+    }
+    return render(request, 'items-list.html', context)
 
 def get_item(request, id):
     for item in ITEMS:
