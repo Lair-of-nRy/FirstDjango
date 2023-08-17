@@ -20,8 +20,8 @@ def home(request):
     #     <strong>Автор</strong>: <i>Кожанов А.Н.</i>"""
     # return HttpResponse(text)
     context = {
-        'name': "Mia",
-        'email': "mia@ya.ru"
+        'name': "Александр",
+        'email': "***@gmail.com"
     }
     return render(request, "index.html", context)
 
@@ -30,7 +30,9 @@ def about(request):
         Отчество: <b>{AUTOR["Отчество"]}</b><br>\
         Фамилия: <b>{AUTOR["Фамилия"]}</b><br>\
         телефон: <b>{AUTOR["телефон"]}</b><br>\
-        email: <b>{AUTOR["email"]}</b>'
+        email: <b>{AUTOR["email"]}</b>\
+        <p><a href="/"><b> Home </b></a> <b>/</b>\
+              <a href="/items"><b> Items </b></a>'
     return HttpResponse(text)
 
 def get_items(request):
@@ -45,11 +47,15 @@ def get_items(request):
     return render(request, 'items-list.html', context)
 
 def get_item(request, id):
-    for item in ITEMS:
-        if item['id'] == id:
-            result = f'<p>{item["name"]} - {item["quantity"]} шт<br>\
-                <a href="/items"> Назад к списку товаров</a>'
-            return HttpResponse(result)
-        return HttpResponseNotFound(f'<p>Товар с id={id} не найден')
-
+    # for item in ITEMS:
+    #     if item['id'] == id:
+    #         result = f'<p>{item["name"]} - {item["quantity"]} шт<br>\
+    #             <a href="/items"> Назад к списку товаров</a>'
+    #         return HttpResponse(result)
+    #     return HttpResponseNotFound(f'<p>Товар с id={id} не найден')
+    context = {
+        'items': ITEMS,
+        'id': id
+    }
+    return render(request, 'item.html', context)
         

@@ -6,11 +6,35 @@
     <title>Start page</title>
 </head>
 <body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            height: 50px;
+        }
+        .header ul{
+            list-style: none;
+        }
+        .header li{
+            float: left;
+            margin-right: 20px;
+        }
+    </style>
+    <div class="header">
+        <ul>
+            <!-- <li><a href='/'><b> Home </b></a></li> -->
+            <li><p><a href='/items'><b> Items </b></a></li>
+            <li><a href='/about'><b> About </b></a></li>
+        </ul>
+    </div>
+
     <h1>Приветствую!</h1>
     <p>Это главная страница сайта</p>
     <h2>
-        My name is {{name}}<br>
-        My email - {{email}}
+        Меня зовут {{ name }}<br>
+        Почта для связи - {{ email }}
     </h2>
-</body>
+    <!-- <br><b><a href="/items"> Список товаров </a></b> -->
 </html>

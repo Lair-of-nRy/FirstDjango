@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список товаров</title>
+    <title>Описание товара</title>
 </head>
 <style>
     *{
@@ -23,16 +23,20 @@
 </style>
 <div class="header">
     <ul>
-        <li><a href='/'><b> Home </b></a></li>
-        <!-- <li><p><a href='/items'><b> Items </b></a></li> -->
+        <!-- <li><a href='/'><b> Home </b></a></li> -->
+        <li><p><a href='/items'><b> Items </b></a></li>
         <li><a href='/about'><b> About </b></a></li>
     </ul>
 </div>
 <body>
-    <h1>Список товаров</h1>
-    
+    <h1>Товар</h1>
+
     {% for item in items %}
-    <li style="list-style: none; margin-left: 10px">><b><a href="/item/{{item.id}}">{{ item.name }}</b></a></li>
+    {% if item.id == id and item.quantity == 0  %}
+        <p><b>{{ item.name }}</b> - товар отсутствует<br>
+    {% elif item.id == id %}
+        <p><b>{{ item.name }}</b> - {{ item.quantity }} шт<br>
+    {% endif %}
     {% endfor %}
 </body>
 </html>
