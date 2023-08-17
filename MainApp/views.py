@@ -54,8 +54,7 @@ def get_item(request, id):
     #         return HttpResponse(result)
     
             context = {
-                'items': ITEMS,
-                'id': id
+                'item': item
             }
             return render(request, 'item.html', context)
     return HttpResponseNotFound(f'<p>Товар с id={id} не найден')

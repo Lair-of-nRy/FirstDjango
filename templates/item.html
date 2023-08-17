@@ -31,12 +31,11 @@
 <body>
     <h1>Товар</h1>
 
-    {% for item in items %}
-    {% if item.id == id and item.quantity == 0  %}
+    {% if item.quantity == 0  %}
         <p><b>{{ item.name }}</b> - товар отсутствует<br>
-    {% elif item.id == id %}
+    {% else %}
         <p><b>{{ item.name }}</b> - {{ item.quantity }} шт<br>
     {% endif %}
-    {% endfor %}
+
 </body>
 </html>
