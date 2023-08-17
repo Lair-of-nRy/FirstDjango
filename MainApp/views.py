@@ -47,15 +47,16 @@ def get_items(request):
     return render(request, 'items-list.html', context)
 
 def get_item(request, id):
-    # for item in ITEMS:
-    #     if item['id'] == id:
+    for item in ITEMS:
+        if item['id'] == id:
     #         result = f'<p>{item["name"]} - {item["quantity"]} шт<br>\
     #             <a href="/items"> Назад к списку товаров</a>'
     #         return HttpResponse(result)
-    #     return HttpResponseNotFound(f'<p>Товар с id={id} не найден')
-    context = {
-        'items': ITEMS,
-        'id': id
-    }
-    return render(request, 'item.html', context)
+    
+            context = {
+                'items': ITEMS,
+                'id': id
+            }
+            return render(request, 'item.html', context)
+    return HttpResponseNotFound(f'<p>Товар с id={id} не найден')
         
