@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from MainApp.models import Item
-from django.core.exceptions import ViewDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist
 
 AUTOR = {'Имя': 'Александр',
         'Отчество': 'Николаевич',
@@ -51,15 +51,19 @@ def get_items(request):
     return render(request, 'items-list.html', context)
 
 def get_item(request, id):
-    item = Item.objects.get(id=id)
-    if item.id == id:
-    #         result = f'<p>{item["name"]} - {item["quantity"]} шт<br>\
-    #             <a href="/items"> Назад к списку товаров</a>'
-    #         return HttpResponse(result)
+    try:
+        item = Item.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return HttpResponseNotFound('такого товара нет')
+    else:
+    #     if item.id == id:
+    # #         result = f'<p>{item["name"]} - {item["quantity"]} шт<br>\
+    # #             <a href="/items"> Назад к списку товаров</a>'
+    # #         return HttpResponse(result)
     
         context = {
             'item': item
         }
         return render(request, 'item.html', context)
-    return ViewDoesNotExist(f'<p>Товар с id={id} не найден')
-        
+    
+   

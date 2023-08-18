@@ -33,7 +33,7 @@
     
     {% for item in items %}
     <!-- <li style="list-style: none; margin-left: 10px">><b><a href="/item/{{item.id}}">{{ item.name }}</b></a></li> -->
-    <table>
+    <table style="display: inline; border: 2px solid #090; border-spacing: 10px 10px;">
         <th><a href="/item/{{item.id}}">{{ item.name }}</a></th>
         <td>{{ item.description }}</td>
     </table>
