@@ -30,11 +30,12 @@
 </div>
 <body>
     <h1>Товар</h1>
-
-    {% if item.quantity == 0  %}
-        <p><b>{{ item.name }}</b> - товар отсутствует<br>
+    <p style="font-size: large;"><b>{{ item.name }}</b></p><br>
+    <p style="font-size: medium;">{{ item.brand }}</p><br>
+    {% if item.count == 0  %}
+        <p style="font-size: large;">товар отсутствует<br>
     {% else %}
-        <p><b>{{ item.name }}</b> - {{ item.quantity }} шт<br>
+        <p style="font-size: large;">на складе {{ item.count }} шт<br>
     {% endif %}
 
 </body>

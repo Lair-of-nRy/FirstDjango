@@ -32,7 +32,11 @@
     <h1>Список товаров</h1>
     
     {% for item in items %}
-    <li style="list-style: none; margin-left: 10px">><b><a href="/item/{{item.id}}">{{ item.name }}</b></a></li>
+    <!-- <li style="list-style: none; margin-left: 10px">><b><a href="/item/{{item.id}}">{{ item.name }}</b></a></li> -->
+    <table>
+        <th><a href="/item/{{item.id}}">{{ item.name }}</a></th>
+        <td>{{ item.description }}</td>
+    </table>
     {% endfor %}
 </body>
 </html>
