@@ -1,34 +1,7 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Описание товара</title>
-</head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    .header{
-        height: 50px;
-    }
-    .header ul{
-        list-style: none;
-    }
-    .header li{
-        float: left;
-        margin-right: 20px;
-    }
-</style>
-<div class="header">
-    <ul>
-        <!-- <li><a href='/'><b> Home </b></a></li> -->
-        <li><p><a href='/items'><b> Items </b></a></li>
-        <li><a href='/about'><b> About </b></a></li>
-    </ul>
-</div>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'inc_header.html' %}
     <h1>Товар</h1>
     <p style="font-size: large;"><b>{{ item.name }}</b></p><br>
     <p style="font-size: medium;">{{ item.brand }}</p><br>
@@ -38,6 +11,4 @@
     {% else %}
         <p style="font-size: large;">на складе {{ item.count }} шт<br>
     {% endif %}
-
-</body>
-</html>
+{% endblock %}

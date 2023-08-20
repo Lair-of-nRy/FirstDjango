@@ -1,42 +1,16 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список товаров</title>
-</head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    .header{
-        height: 50px;
-    }
-    .header ul{
-        list-style: none;
-    }
-    .header li{
-        float: left;
-        margin-right: 20px;
-    }
-</style>
-<div class="header">
-    <ul>
-        <li><a href='/'><b> Home </b></a></li>
-        <!-- <li><p><a href='/items'><b> Items </b></a></li> -->
-        <li><a href='/about'><b> About </b></a></li>
-    </ul>
-</div>
-<body>
+{% extends 'base.html' %}
+
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="style_ilist.css">
+{% endblock %}
+
+{% block content %}
+    {% include 'inc_header.html' %}
     <h1>Список товаров</h1>
-    
     {% for item in items %}
-    <!-- <li style="list-style: none; margin-left: 10px">><b><a href="/item/{{item.id}}">{{ item.name }}</b></a></li> -->
-    <table style="display: inline; border: 2px solid #090; border-spacing: 10px 10px;">
-        <th><a href="/item/{{item.id}}">{{ item.name }}</a></th>
-        <td>{{ item.description }}</td>
-    </table>
+    <div>
+        <a href="/item/{{item.id}}">{{ item.name }}</a>
+    </div>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

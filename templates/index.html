@@ -1,40 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start page</title>
-</head>
-<body>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        .header{
-            height: 50px;
-        }
-        .header ul{
-            list-style: none;
-        }
-        .header li{
-            float: left;
-            margin-right: 20px;
-        }
-    </style>
-    <div class="header">
-        <ul>
-            <!-- <li><a href='/'><b> Home </b></a></li> -->
-            <li><p><a href='/items'><b> Items </b></a></li>
-            <li><a href='/about'><b> About </b></a></li>
-        </ul>
-    </div>
+{% extends 'base.html' %}
 
-    <h1>Приветствую!</h1>
-    <p>Это главная страница сайта</p>
-    <h2>
-        Меня зовут {{ name }}<br>
-        Почта для связи - {{ email }}
-    </h2>
-    <!-- <br><b><a href="/items"> Список товаров </a></b> -->
-</html>
+{% load static %}
+
+{% block content %}
+
+{% include 'inc_header.html' %}
+<img width="250px" src="{% static 'logo.jpeg' %}" alt="My image">
+    <h1 class="demo">Приветствую!</h1>
+
+    <span style='color: rgb(201, 6, 201)'>Меня зовут: {{ name }}.</span><br>
+    Мой email для связи: <i>{{ email }}</i><br>
+
+
+    Это главная страница сайта.<br>
+    <i> Сайт пока в разработке </i>
+
+{% endblock %}

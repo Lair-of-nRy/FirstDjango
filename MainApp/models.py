@@ -6,5 +6,11 @@ class Item(models.Model):
    count = models.PositiveIntegerField()
    description = models.CharField(max_length=200)
 
-def __repr__(self):
-   return f'Item({self.name}, {self.brand}, {self.count})'
+   def __repr__(self):
+      return f'Item({self.name}, {self.brand}, {self.count})'
+   
+class Color(models.Model):
+    name = models.CharField(max_length=32)
+
+    def __repr__(self):
+        return f'Color({self.name})'
