@@ -3,9 +3,14 @@
 {% block content %}
     {% include 'inc_header.html' %}
     <h1>Товар</h1>
-    <p style="font-size: large;"><b>{{ item.name }}</b></p><br>
-    <p style="font-size: medium;">{{ item.brand }}</p><br>
-    <p style="font-size: medium;">{{ item.description }}</p><br>
+    <span style="font-size: large;"><b>{{ item.name }}</b></span><br>
+    <span style="font-size: large;">{{ item.brand }}</span><br>
+    <span style="font-size: medium;">{{ item.description }}</span><br>
+    <ol>
+        {% for color in cls %}
+            <li style="list-style: square; color: {{ color }};"><span style="color: black;"> {{ color }}</span></li>
+        {% endfor %}
+    </ol>
     {% if item.count == 0  %}
         <p style="font-size: large;">товар отсутствует<br>
     {% else %}

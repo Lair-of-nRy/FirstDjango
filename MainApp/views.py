@@ -56,14 +56,27 @@ def get_item(request, id):
     except ObjectDoesNotExist:
         return HttpResponseNotFound('такого товара нет')
     else:
-    #     if item.id == id:
-    # #         result = f'<p>{item["name"]} - {item["quantity"]} шт<br>\
-    # #             <a href="/items"> Назад к списку товаров</a>'
-    # #         return HttpResponse(result)
-    
-        context = {
-            'item': item
-        }
+        # context = {
+        #     'item': item
+        # }
+        # return render(request, 'item.html', context)
+        try:
+            item_colors = item.colors.all()
+            colors = []
+            for color in item_colors:
+                colors.append(color.name)
+        except AttributeError:
+            colors = None
+            context = {
+                'item': item,
+                'cls': colors
+            }
+            return render(request, 'item.html', context)
+        else:
+            context = {
+                'item': item,
+                'cls': colors
+            }
         return render(request, 'item.html', context)
     
    
